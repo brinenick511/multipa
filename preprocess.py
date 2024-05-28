@@ -33,7 +33,10 @@ parser.add_argument("--clear_cache", action="store_true",
 parser.add_argument("--cache_dir", type=str,
                     help="Specify the cache directory's path if you choose to clear the cache.")
 args = parser.parse_args()
-assert args.clear_cache and args.cache_dir is not None, "Cache directory's path is not defined."
+print(args.clear_cache, args.clear_cache is None)
+print(args.cache_dir, args.cache_dir is not None)
+# assert args.clear_cache and args.cache_dir is not None, "Cache directory's path is not defined."
+assert args.clear_cache is None or args.cache_dir is not None, "Cache directory's path is not defined."
 
 def transliterate(sample: dict):
     if "chapter_id" in sample.column_names:
